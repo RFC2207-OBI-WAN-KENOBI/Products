@@ -8,18 +8,18 @@ const { Pool, Client } = require('pg')
 // pools will use environment variables
 // for connection information
 // set env variables in .env later...
-const pool = new Pool({
-  user: 'vickiwong',
-  host: 'localhost',
-  database: 'obiwan-products',
-  password: null,
-  port: 5432,
-})
+// const pool = new Pool({
+//   user: 'vickiwong',
+//   host: 'localhost',
+//   database: 'obiwan-products',
+//   password: null,
+//   port: 5432,
+// })
 
-pool.query('SELECT NOW()', (err, res) => {
-  console.log(err, res)
-  pool.end()
-})
+// pool.query('SELECT NOW()', (err, res) => {
+//   console.log(err, res)
+//   pool.end()
+// })
 
 // you can also use async/await
 // const res = await pool.query('SELECT NOW()')
@@ -29,16 +29,21 @@ pool.query('SELECT NOW()', (err, res) => {
 // for connection information
 // set env variables in .env later...
 const client = new Client({
-  user: 'vickiwong',
-  host: 'localhost',
-  database: 'obiwan-products',
-  password: null,
+  host: "localhost",
+  user: "postgres",
   port: 5432,
+  password: "password",
+  database: "obiwan-products",
+
 })
 client.connect()
-client.query('SELECT NOW()', (err, res) => {
-  console.log(err, res)
-  client.end()
+client.query('SELECT * from features', (err, res) => {
+  if (!err) {
+    console.log(res.rows);
+  } else {
+    console.log(err.message);
+  }
+  client.end;
 })
 // const res = await client.query('SELECT NOW()')
 // await client.end()
