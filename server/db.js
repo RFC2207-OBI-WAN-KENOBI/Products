@@ -1,5 +1,10 @@
 const { Pool, Client } = require('pg')
 
+// used pgadmin to import all CSV files
+// created and set up all tables in pgadmin
+// now the goal is to create the db connection and set up the routes
+
+
 // pools will use environment variables
 // for connection information
 // set env variables in .env later...
