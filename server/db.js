@@ -29,7 +29,7 @@ pool.query('SELECT NOW()', (err, res) => {
 // for connection information
 // set env variables in .env later...
 const client = new Client({
-  user: 'dbuser',
+  user: 'vickiwong',
   host: 'localhost',
   database: 'obiwan-products',
   password: null,
