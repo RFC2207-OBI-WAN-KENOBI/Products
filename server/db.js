@@ -28,6 +28,9 @@ const { Pool, Client } = require('pg')
 // clients will also use environment variables
 // for connection information
 // set env variables in .env later...
+
+// succesfully connected to database! I had to use the password I used when installing postgres
+// I ran node db.js in the terminal in the server directory and was able to see features :D
 const client = new Client({
   host: "localhost",
   user: "postgres",
