@@ -20,13 +20,8 @@ var router = require('./routes.js');
 app.use(express.static('./public'));
 
 // Set up our routes
-// app.use wasn't working?
-app.get('/products', router);
-// app.get('/products', (req, res, next) => {
-//   console.log('req.query: ', req.query)
-// })
+app.use('/products', router);
 
-console.log('app.js')
 // set port
 const PORT = process.env.PORT;
 app.listen(PORT);

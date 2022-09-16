@@ -129,7 +129,7 @@ class Overview extends React.Component {
   //WHEN I MOUNT:
   componentDidUpdate() {
     if (this.props.product.id !== this.state.currentProduct) {
-      axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${this.props.product.id}`,
+      axios.get(`/products/${this.props.product.id}`,
       {headers: {'Authorization': `${API_KEY}`}, params: { product_id: this.props.product.id}})
         .then((productInfo) => {
           this.setState({ 'productInfo': productInfo.data.features, 'currentProduct': this.props.product.id })
