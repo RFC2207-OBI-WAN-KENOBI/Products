@@ -3,7 +3,8 @@ var models = require('../models');
 
 module.exports = {
   get: function (req, res) {
-    var params = [req.query.count, req.query.page];
+    console.log('hey');
+    var params = [req.query.count, (req.query.page * req.query.count).toString()];
     models.products.getAll(params, function(err, results) {
     if (err) {
       console.error('Unable to retrieve products from the database: ', err);

@@ -3,8 +3,12 @@ var db = require('../db').client;
 module.exports ={
   // retrieves the list of products
   getAll: function (params, callback) {
-    db.query('SELECT * FROM product LIMIT ? OFFSET ?*?', params, function(err, results) {
-      console.log('it worked')
+    console.log('params: ', params);
+    const query = {
+      text: 'SELECT * FROM product LIMIT $1 OFFSET $2',
+      values: [params[0], params[1]]
+    }
+    db.query(query, function(err, results) {
       callback(err, results);
     });
   },

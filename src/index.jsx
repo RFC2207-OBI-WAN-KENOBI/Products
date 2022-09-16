@@ -21,21 +21,25 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    console.log('sending get response to products')
     axios.get('/products', {
       headers: {'Authorization': `${API_KEY}`},
       params: {
         count: 5,
         page: 1
-      }})
-    .then(res => {
-      this.setState({ products: res.data, product: res.data[2] })
-      return axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta', {
-        headers: {'Authorization': `${API_KEY}`},
-        params: {product_id: res.data[2].id}
-      })
+      }
+    })
+    .then((res) => {
+      console.log('getting response from products...')
+      console.log(res.data.rows);
+      // this.setState({ products: res.data, product: res.data[2] })
+      // return axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta', {
+      //   headers: {'Authorization': `${API_KEY}`},
+      //   params: {product_id: res.data[2].id}
+      // })
     })
     .then(res => {
-      this.setState({ reviewMeta: res.data })
+      // this.setState({ reviewMeta: res.data })
     })
     .catch(err =>
       console.log(err));
