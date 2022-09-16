@@ -143,16 +143,16 @@ class AnswerComp extends React.Component {
     else {
       return (
         <div id="a-comp">
-          {this.state.answerArr.map((ans) => (
-            <div id="a-wrapper">
+          {this.state.answerArr.map((ans, index) => (
+            <div key={index} id="a-wrapper">
               <div style={{ display: "none" }}>
                 {this.checkName(ans.answerer_name)}
               </div>
               <h1 id="a-letter">A: </h1>
               <p id="a-body">{ans.body}</p>
               <div id='a-img'>
-              {ans.photos.map((img) =>
-              (<img src={`${img.url}`} alt='Should Have Image Here' id='a-img-display'/>)
+              {ans.photos.map((img, index) =>
+              (<img key={index} src={`${img.url}`} alt='Should Have Image Here' id='a-img-display'/>)
               )}
               </div>
               <div id='a-sub-body' style={{fontSize: 'small', fontWeight: 'lighter', marginTop: '5px'}}>

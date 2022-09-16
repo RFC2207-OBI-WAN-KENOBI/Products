@@ -4,11 +4,11 @@ function Stars ({ rating }) {
 
   var starsUnderlay = [
     <span className='stars-underlay'>
-      <i class="fa-regular fa-star"></i>
-      <i class="fa-regular fa-star"></i>
-      <i class="fa-regular fa-star"></i>
-      <i class="fa-regular fa-star"></i>
-      <i class="fa-regular fa-star"></i>
+      <i className="fa-regular fa-star"></i>
+      <i className="fa-regular fa-star"></i>
+      <i className="fa-regular fa-star"></i>
+      <i className="fa-regular fa-star"></i>
+      <i className="fa-regular fa-star"></i>
     </span>]
 
   function getStarsIcons() {

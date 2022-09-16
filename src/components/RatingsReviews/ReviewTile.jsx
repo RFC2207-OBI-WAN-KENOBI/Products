@@ -5,7 +5,7 @@ function ReviewTile ({ review }) {
 
   function reviewerRec() {
     if (review.recommend) {
-      return <div className='reviewer-rec-yes'> <i class="fa-solid fa-check"></i> I recommend this product </div>
+      return <div className='reviewer-rec-yes'> <i className="fa-solid fa-check"></i> I recommend this product </div>
     }
   }
 

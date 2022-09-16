@@ -21,7 +21,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/', {
+    axios.get('/products', {
       headers: {'Authorization': `${API_KEY}`},
       params: {
         count: 5,
