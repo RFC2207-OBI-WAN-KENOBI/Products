@@ -135,11 +135,12 @@ class Overview extends React.Component {
           this.setState({ 'productInfo': productInfo.data.features, 'currentProduct': this.props.product.id })
         })
         .then(() => {
-          return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${this.props.product.id}/styles`, {headers: {'Authorization': `${API_KEY}`},
+          return axios.get(`/products/${this.props.product.id}/styles`, {headers: {'Authorization': `${API_KEY}`},
           params: { product_id: this.props.product.id}})
         })
         .then((productStyles) => {
           let sizes = [];
+          console.log('productStyles: ', productStyles);
           for (var key in productStyles.data.results[0].skus) {
             sizes.push(productStyles.data.results[0].skus[key].size)
           }
