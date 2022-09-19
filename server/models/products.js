@@ -58,7 +58,7 @@ module.exports = {
     return db.query(query)
       .then(result => {
         var obj = {};
-        obj.product_id = params[0];
+        obj.product_id = Number(params[0]);
         obj.results = result.rows;
         console.log(obj);
         return obj;
