@@ -11,6 +11,7 @@ class MiniGallery extends React.Component {
   }
 
   componentDidUpdate() {
+    console.log(this.props.photos)
     if (this.props.photos.indexOf(this.state.tinyPhotos[this.state.index]) === -1) {
       this.photosInArray(this.props.index);
     }

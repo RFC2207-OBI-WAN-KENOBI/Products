@@ -51,7 +51,7 @@ module.exports = {
   getStyles: function(params) {
     console.log('get styles params: ', params);
     const query = {
-      text: `SELECT DISTINCT ON(styles.style_id) styles.style_id, name, sale_price, original_price, default_styles, json_agg(json_build_object('thumbnail_url', thumbnail_url, 'url', url)) as photos,
+      text: `SELECT DISTINCT ON(styles.style_id) styles.style_id, name, sale_price, original_price, default_styles as "default?", json_agg(json_build_object('thumbnail_url', thumbnail_url, 'url', url)) as photos,
       json_object_agg(skus.id, json_build_object ('size', size, 'quantity', quantity)) as skus from styles left join photos on styles.style_id = photos.style_id left join skus on styles.style_id = skus.style_id where product_id = $1 group by styles.style_id, photos.id order by styles.style_id`,
       values: [params]
     }
@@ -91,8 +91,7 @@ module.exports = {
 //   }
 // });
 
-// db.query(`SELECT DISTINCT ON(styles.style_id) styles.style_id, name, sale_price, original_price, default_styles, json_agg(json_build_object('thumbnail_url', thumbnail_url, 'url', url)) as photos,
-// json_object_agg(skus.id, json_build_object ('size', size, 'quantity', quantity)) as skus from styles left join photos on styles.style_id = photos.style_id left join skus on styles.style_id = skus.style_id where product_id = 1 group by styles.style_id, photos.id order by styles.style_id`, (err, res) => {
+// db.query(`SELECT DISTINCT ON(styles.style_id) styles.style_id, name, sale_price, original_price, default_styles, json_agg(json_build_object('thumbnail_url', thumbnail_url, 'url', url)) as photos,json_object_agg(skus.id, json_build_object ('size', size, 'quantity', quantity)) as skus from styles left join photos on styles.style_id = photos.style_id left join skus on styles.style_id = skus.style_id where product_id = 1 group by styles.style_id, photos.id order by styles.style_id`, (err, res) => {
 //   if (err) {
 //     console.log(err.stack)
 //   } else {
