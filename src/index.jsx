@@ -25,14 +25,14 @@ class App extends React.Component {
       headers: {'Authorization': `${API_KEY}`},
       params: {
         count: 5,
-        page: 1
+        page: 1,
       }
     })
     .then((res) => {
       this.setState({ products: res.data, product: res.data[0] })
       return axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta', {
         headers: {'Authorization': `${API_KEY}`},
-        params: {product_id: res.data[2].id}
+        params: {product_id: res.data[0].id}
       })
     })
     .then(res => {

@@ -13,27 +13,27 @@ export const options = {
 }
 
 export default function () {
-  // const params = {
-  //   page: Math.floor(Math.random() * 10),
-  //   count: 5
-  // }
-  // const res = http.get(`http://localhost:3000/products`, params);
-  // check(res, {
-  //   'is status 200': (r) => r.status === 200
-  // })
+  const params = {
+    page: Math.floor(Math.random() * 10),
+    count: 5
+  }
+  const res = http.get(`http://localhost:3000/products`, params);
+  check(res, {
+    'is status 200': (r) => r.status === 200
+  })
   const params2 = {
-    product_id: Math.floor(Math.random() * 1000011) + 1;
+    product_id: Math.floor(Math.random() * 1000011) + 1
   }
   const res2 = http.get(`http://localhost:3000/products/1?product_id=1`);
   check(res2, {
     'is status 200': (r) => r.status === 200
   })
-  // const res3 = http.get(`http://localhost:3000/products/1/styles?product_id=1`);
-  // check(res3, {
-  //   'is status 200': (r) => r.status === 200
-  // })
-  // const res4 = http.get(`http://localhost:3000/products/1/related?product_id=1`);
-  // check(res4, {
-  //   'is status 200': (r) => r.status === 200
-  // })
+  const res3 = http.get(`http://localhost:3000/products/1/styles?product_id=1`);
+  check(res3, {
+    'is status 200': (r) => r.status === 200
+  })
+  const res4 = http.get(`http://localhost:3000/products/1/related?product_id=1`);
+  check(res4, {
+    'is status 200': (r) => r.status === 200
+  })
 }

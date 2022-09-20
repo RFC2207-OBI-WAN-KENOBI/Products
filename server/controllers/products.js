@@ -44,13 +44,3 @@ module.exports = {
     })
   }
 };
-
-// callback version
-// models.products.getAll(params, function(err, results) {
-//   if (err) {
-//     console.error('Unable to retrieve products from the database: ', err);
-//     res.sendStatus(500);
-//   } else {
-//     res.json(results);
-//   }
-//   });

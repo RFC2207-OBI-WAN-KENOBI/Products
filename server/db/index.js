@@ -1,11 +1,13 @@
 const { Pool, Client } = require('pg')
+const path = require('path');
+require('dotenv').config({path: path.resolve(__dirname, '../.env')});
 
 const client = new Client({
-  host: "localhost",
-  user: "postgres",
-  port: 5432,
-  password: "password",
-  database: "obiwan-products",
+  host: process.env.HOST,
+  user: process.env.USERNAME,
+  port: process.env.DBPORT,
+  password: process.env.PASSWORD,
+  database: process.env.DATABASE,
 })
 client.connect();
 
