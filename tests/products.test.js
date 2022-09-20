@@ -5,7 +5,7 @@ it ('GET /products with count 5 and page 1 parameters should return a status of 
     .get('http://localhost:3000/products?count=5&page=1', {json: true}, {headers: {'Content-Type': 'application/json'}})
     .expect('status', 200)
     .then(function (res) {
-      var data = JSON.parse(res['body']);
+      var data = res._json;
       expect(data.length).toBe(5);
     })
 });

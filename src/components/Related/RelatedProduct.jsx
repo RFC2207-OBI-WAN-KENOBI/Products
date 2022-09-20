@@ -45,8 +45,8 @@ class RelatedProduct extends React.Component {
       if (typeof this.props.styles.data === 'object') {
         var photoUrl = this.props.styles.data.results[0].photos[this.state.photoIndex - 1].thumbnail_url;
         let salesPrice = 0;
-        if (this.props.styles.data.results[0].sale_price) {
-          salesPrice = (this.props.styles.data.results[0].original_price - this.props.styles.data.results[0].sale_price)
+        if (Number(this.props.styles.data.results[0].sale_price)) {
+          salesPrice = (Number(this.props.styles.data.results[0].original_price) - Number(this.props.styles.data.results[0].sale_price))
         }
         if (salesPrice !== 0) {
           return (

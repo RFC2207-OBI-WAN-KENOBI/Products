@@ -4,8 +4,8 @@ module.exports = {
   // retrieves the list of products
   getAll: function (params, callback) {
     const query = {
-      text: 'SELECT * FROM product LIMIT $1 OFFSET $2',
-      values: [params[0], params[1]]
+      text: 'SELECT * FROM product LIMIT $1',
+      values: [params[0]]
     }
     return db.query(query)
       .then(queryResult => {
@@ -40,7 +40,6 @@ module.exports = {
     }
     return db.query(query)
       .then(result => {
-        console.log(result.rows[0].related);
         return result.rows[0].related;
       })
       .catch(err => {
@@ -51,8 +50,7 @@ module.exports = {
   getStyles: function(params) {
     console.log('get styles params: ', params);
     const query = {
-      text: `SELECT DISTINCT ON(styles.style_id) styles.style_id, name, sale_price, original_price, default_styles as "default?", json_agg(json_build_object('thumbnail_url', thumbnail_url, 'url', url)) as photos,
-      json_object_agg(skus.id, json_build_object ('size', size, 'quantity', quantity)) as skus from styles left join photos on styles.style_id = photos.style_id left join skus on styles.style_id = skus.style_id where product_id = $1 group by styles.style_id, photos.id order by styles.style_id`,
+      text: `SELECT DISTINCT ON(style_id) styles.style_id, name, sale_price, original_price, default_styles as "default?", json_agg(json_build_object('thumbnail_url', thumbnail_url, 'url', url)) as photos, json_object_agg(skus.id, json_build_object ('size', size, 'quantity', quantity)) as skus FROM styles LEFT JOIN photos on styles.style_id = photos.style_id LEFT JOIN skus on styles.style_id = skus.style_id where product_id = $1 GROUP BY styles.style_id, photos.style_id order by styles.style_id`,
       values: [params]
     }
     return db.query(query)
@@ -60,7 +58,13 @@ module.exports = {
         var obj = {};
         obj.product_id = Number(params[0]);
         obj.results = result.rows;
-        console.log(obj);
+        obj.results.forEach((style) => {
+          style.photos = style.photos.filter((value, index, self) =>
+            index === self.findIndex((t) => (
+              t.url === value.url && t.thumbnail_url === value.thumbnail_url
+            ))
+        )
+        })
         return obj;
       })
       .catch(err => {
@@ -68,6 +72,8 @@ module.exports = {
       })
   }
 }
+
+//text: `SELECT DISTINCT ON(style_id) styles.style_id, name, sale_price, original_price, default_styles as "default?", json_agg(json_build_object('thumbnail_url', thumbnail_url, 'url', url)) as photos, json_object_agg(skus.id, json_build_object ('size', size, 'quantity', quantity)) as skus FROM styles LEFT JOIN photos on styles.style_id = photos.id LEFT JOIN skus on styles.style_id = skus.style_id where product_id = $1 GROUP BY styles.style_id, photos.id order by styles.style_id`,
 
 // 'SELECT product.id, product.name, product.slogan, product.description, product.category, product.default_price, (SELECT array_to_json(coalesce(array_agg(feat), array[]::record[])) from (SELECT features.feature, features.value FROM features WHERE features.product_id = $1) feat) as features FROM product where product.id = $1'
 // var symbol = '?'

@@ -6,6 +6,7 @@
   "author": "Zachariah1618 <zvallow@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "artillery": "^2.0.0-23",
     "axios": "^0.27.2",
     "cors": "^2.8.5",
     "dotenv": "^16.0.2",
