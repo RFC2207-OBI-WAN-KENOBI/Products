@@ -23,7 +23,6 @@ app.use(express.static('./public'));
 app.use('/products', router);
 app.get('/loaderio-7594b75257e7eeeec823ad7b70ee19e9', function (req, res) {
   res.send('loaderio-7594b75257e7eeeec823ad7b70ee19e9')
-  res.sendStatus(200);
 })
 
 // set port
