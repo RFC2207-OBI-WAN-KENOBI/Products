@@ -21,6 +21,9 @@ app.use(express.static('./public'));
 
 // Set up our routes
 app.use('/products', router);
+app.get('/loaderio-5ae7207dc2201dc79ab3307427d18679.txt', function (req, res) {
+  res.send('loaderio-5ae7207dc2201dc79ab3307427d18679')
+})
 
 // set port
 const PORT = process.env.PORT || 3000;
