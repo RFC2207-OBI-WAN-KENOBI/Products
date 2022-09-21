@@ -21,7 +21,7 @@ app.use(express.static('./public'));
 
 // Set up our routes
 app.use('/products', router);
-app.get('/loaderio-5ae7207dc2201dc79ab3307427d18679.txt', function (req, res) {
+app.get('/loaderio-5ae7207dc2201dc79ab3307427d18679/', function (req, res) {
   res.sendStatus(200);
 })
 
