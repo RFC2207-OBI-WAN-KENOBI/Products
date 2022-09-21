@@ -23,7 +23,7 @@ app.use(express.static('./public'));
 app.use('/products', router);
 
 // set port
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT);
 console.log(`Server listening at port http://localhost:${PORT}`)
 

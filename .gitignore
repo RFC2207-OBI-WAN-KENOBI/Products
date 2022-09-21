@@ -6,3 +6,5 @@ SEGAkeypair.pem
 .DS_Store
 public/bundle.js
 .env
+.pem
+.txt
