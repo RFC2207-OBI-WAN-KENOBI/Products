@@ -11,6 +11,6 @@ const client = new Pool({
   idleTimeoutMillis: 0,
   connectionTimeoutMillis: 0,
 })
-// client.connect();
+client.connect();
 
 module.exports.client = client;
