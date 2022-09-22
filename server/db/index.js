@@ -8,6 +8,8 @@ const client = new Pool({
   port: process.env.DBPORT,
   password: process.env.PASSWORD,
   database: process.env.DATABASE,
+  idleTimeoutMillis: 0,
+  connectionTimeoutMillis: 0,
 })
 // client.connect();
 
