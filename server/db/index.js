@@ -9,6 +9,6 @@ const client = new Pool({
   password: process.env.PASSWORD,
   database: process.env.DATABASE,
 })
-client.connect();
+// client.connect();
 
 module.exports.client = client;
