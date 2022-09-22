@@ -30,7 +30,7 @@ module.exports = {
         console.log(err);
       })
       .then(
-        pool.end()
+        db.pool.end()
       )
   },
   // retrieves related products based on product id
