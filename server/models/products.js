@@ -1,4 +1,4 @@
-var db = require('../db').client;
+var db = require('../db').pool;
 
 module.exports = {
   // retrieves the list of products
@@ -29,6 +29,9 @@ module.exports = {
       .catch(err => {
         console.log(err);
       })
+      .then(
+        pool.end()
+      )
   },
   // retrieves related products based on product id
   getRelated: function(params) {
