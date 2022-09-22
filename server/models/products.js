@@ -47,7 +47,7 @@ module.exports = {
   // retrieves styles and photos based on product id
   getStyles: function(params) {
     const query = {
-      text: `SELECT DISTINCT ON(style_id) styles.style_id, name, sale_price, original_price, default_styles as "default?", json_agg(json_build_object('thumbnail_url', thumbnail_url, 'url', url)) as photos, json_object_agg(skus.id, json_build_object ('size', size, 'quantity', quantity)) as skus FROM styles LEFT JOIN photos on styles.style_id = photos.style_id LEFT JOIN skus on styles.style_id = skus.style_id where product_id = $1 GROUP BY styles.style_id, photos.style_id order by styles.style_id`,
+      text: `SELECT DISTINCT ON(styles.style_id) styles.style_id, styles.name, sale_price, original_price, default_styles as "default?", json_agg(json_build_object('thumbnail_url', thumbnail_url, 'url', url)) as photos, json_object_agg(skus.id, json_build_object ('size', size, 'quantity', quantity)) as skus FROM styles LEFT JOIN photos on styles.style_id = photos.style_id LEFT JOIN skus on styles.style_id = skus.style_id where product_id = $1 GROUP BY styles.style_id, photos.style_id order by styles.style_id`,
       values: [params]
     }
     return db.query(query)
