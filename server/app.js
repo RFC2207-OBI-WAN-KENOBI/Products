@@ -21,8 +21,8 @@ app.use(express.static('./public'));
 
 // Set up our routes
 app.use('/products', router);
-app.get('/loaderio-311f8af8d7c2afb75d6d9579d93d90b7', function (req, res) {
-  res.send('loaderio-311f8af8d7c2afb75d6d9579d93d90b7')
+app.get('/loaderio-2305e798cf2163ee4b537947bd4a7f10', function (req, res) {
+  res.send('loaderio-2305e798cf2163ee4b537947bd4a7f10')
 })
 
 // set port
